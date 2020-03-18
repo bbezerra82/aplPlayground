@@ -1,0 +1,28 @@
+{
+    "data": {
+        "values":[
+            "alpha",
+            "bravo",
+            "charlie"
+        ]
+    },
+    "fileInfo":{
+        "values":
+    [{
+        "aplVersion" : "1.1",
+        "validJson" : true,
+        "externalDatasources":"true",
+        "isExported" : true,
+        "commands":"none",
+        "fileSize": "1992 KB"
+    },
+    {
+        "aplVersion" : "1.1",
+        "validJson" : true,
+        "externalDatasources":"true",
+        "isExported" : true,
+        "commands":"none",
+        "fileSize": "1234 KB"
+    }]
+    }
+}

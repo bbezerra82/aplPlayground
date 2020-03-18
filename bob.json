@@ -1,0 +1,206 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": {
+        "type": "headBob",
+        "duration": 400,
+        "id":"CocoHead"
+    },
+    "graphics": {},
+    "commands": {
+        "headBob": {
+            "parameters": [
+                "duration",
+                "delay",
+                "id"
+            ],
+            "command": [
+                {
+                    "type": "AnimateItem",
+                    "componentId":"${id}",
+                    "repeatCount": 10,
+                    "repeatMode": "reverse",
+                    "duration": "${duration}",
+                    "delay": "${delay || 250}",
+                    "value": [
+                        {
+                            "property": "transform",
+                            "from": [
+                                {
+                                    "translateY": "1"
+                                }
+                            ],
+                            "to": [
+                                {
+                                    "translateY": "7"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "AnimateItem",
+                    "componentId":"${id}",
+                    "duration": "${duration / 2}",
+                    "delay": "${delay || 0}",
+                    "value": [
+                        {
+                            "property": "transform",
+                            "from": [
+                                {
+                                    "rotate": "0",
+                                    "translateY": "7"
+                                }
+                            ],
+                            "to": [
+                                {
+                                    "rotate": "4",
+                                    "translateY": "1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "tailWag": {
+            "parameters": [
+                "duration",
+                "delay",
+                "componentId"
+            ],
+            "command": [
+                {
+                    "type": "AnimateItem",
+                    "componentId": "${componentId}",
+                    "repeatCount": 30,
+                    "repeatMode": "reverse",
+                    "duration": "${duration}",
+                    "delay": "${delay || 250}",
+                    "value": [
+                        {
+                            "property": "transform",
+                            "from": [
+                                {
+                                    "translateX": "-1",
+                                    "translateY": "1"
+                                }
+                            ],
+                            "to": [
+                                {
+                                    "translateX": "3",
+                                    "translateY": "4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "layouts": {
+        "Page1": {
+            "parameters": [],
+            "items": [
+                {
+                    "type": "Container",
+                    "grow": 1,
+                    "width": "100%",
+                    "height": "100%",
+                    "alignItems": "start",
+                    "justifyContent": "end",
+                    "id": "MainContainer",
+                    "items": [
+                        {
+                            "type": "Frame",
+                            "width": "100%",
+                            "height": "100%",
+                            "position": "absolute",
+                            "backgroundColor": "#D0BD82"
+                        },
+                        {
+                            "type": "Container",
+                            "id": "CocoTail",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "width": "600dp",
+                                    "height": "400dp",
+                                    "source": "https://halexa-coco-schiano-assets.s3.amazonaws.com/v3coco_tail.png"
+                                }
+                            ],
+                            "position": "absolute",
+                            "bottom": "20"
+                        },
+                        {
+                            "type": "Container",
+                            "id": "CocoBody",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "width": "600dp",
+                                    "height": "400dp",
+                                    "source": "https://halexa-coco-schiano-assets.s3.amazonaws.com/v3coco_body.png"
+                                }
+                            ],
+                            "position": "absolute",
+                            "bottom": "20"
+                        },
+                        {
+                            "type": "Container",
+                            "id": "CocoHead",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "width": "600dp",
+                                    "height": "400dp",
+                                    "source": "https://halexa-coco-schiano-assets.s3.amazonaws.com/v3coco_head.png"
+                                }
+                            ],
+                            "position": "absolute",
+                            "bottom": "20",
+                            "onMount": [
+                                {
+                                    "type": "headBob",
+                                    "duration": 400
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "MyPager": {
+            "parameters": [],
+            "items": [
+                {
+                    "type": "Pager",
+                    "id": "pagerComponentId",
+                    "width": "100vw",
+                    "height": "100vh",
+                    "items": [
+                        {
+                            "type": "Page1"
+                        }
+                    ]
+                }
+            ]
+        }   
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "MyPager"
+            }
+        ]
+        
+    }
+}
